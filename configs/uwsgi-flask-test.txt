@@ -1,0 +1,7 @@
+[uwsgi]
+vhost = true
+socket = /run/uwsgi/app/flask-test/flask-test.socket
+venv = /var/www/flask-test/.env
+chdir = /var/www/flask-test/application
+module = application
+callable = app

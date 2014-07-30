@@ -1,0 +1,22 @@
+server {
+        listen          80;
+        server_name     flask-test.shelepen.com.ua;
+        access_log /var/www/flask-test/logs/access.log;
+        error_log /var/www/flask-test/logs/error.log;
+
+        location / {
+            #uwsgi_pass      127.0.0.1:9001;
+            uwsgi_pass      unix:///run/uwsgi/app/flask-test/flask-test.socket;
+            include         uwsgi_params;
+            uwsgi_param     UWSGI_SCHEME $scheme;
+            uwsgi_param     SERVER_SOFTWARE    nginx/$nginx_version;
+
+        }
+
+        location /static {
+            root   /var/www/flask-test/public_html/static/;
+            index  index.html index.htm;
+
+        }
+
+}
