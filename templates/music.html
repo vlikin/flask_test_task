@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+    <h2>Music</h2>
+    <audio controls="contorls" autoplay="autoplay" ></audio>
+    <ul>
+        {% for song in songs %}
+            <li><a href="javascript:void(0)" onclick="playSong('{{song}}')">{{song}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
