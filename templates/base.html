@@ -18,9 +18,24 @@
        <nav id="nav">
            Navigation: <br />
            {% block nav %}
+                <li><a href="{{url_for('index', page='home')}}">Home</a></li>
+                <li><a href="{{url_for('login')}}">Login</a></li>
                 <li><a href="{{url_for('remote')}}">Remote control</a></li>
                 <li><a href="{{url_for('music')}}">Music</a></li>
            {% endblock %}
        </nav>
+       {% block flashed %}
+            <div id="flashed">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <pre>
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        </pre>
+                    {% endif %}
+                {% endwith %}
+            </div>
+       {% endblock %}
     </body>
 </html>

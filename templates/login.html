@@ -15,13 +15,4 @@
             <p><input type="submit" name="login" value="Login" /></p>
         </form>
     {% endif %}
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <pre>
-                {% for message in messages %}
-                    {{message}}
-                {% endfor %}
-            </pre>
-        {% endif %}
-    {% endwith %}
 {% endblock %}
