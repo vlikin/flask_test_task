@@ -8,8 +8,8 @@
         <!--[if lt IE 8]>
             <link href="/static/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <![endif]-->
-        <script type="text/javascript" src="static/script/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="static/script/script.js"></script>
+        <script type="text/javascript" src="/static/script/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="/static/script/script.js"></script>
     <head>
     <body>
        <main id="content">
@@ -18,10 +18,11 @@
        <nav id="nav">
            Navigation: <br />
            {% block nav %}
-                <li><a href="{{url_for('index', page='home')}}">Home</a></li>
+                <li><a href="{{url_for('home')}}">Home</a></li>
                 <li><a href="{{url_for('login')}}">Login</a></li>
                 <li><a href="{{url_for('remote')}}">Remote control</a></li>
                 <li><a href="{{url_for('music')}}">Music</a></li>
+                <li><a href="{{url_for('index', page='about')}}">Music</a></li>
            {% endblock %}
        </nav>
        {% block flashed %}

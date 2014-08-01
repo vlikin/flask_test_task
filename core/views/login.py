@@ -3,7 +3,7 @@ import settings
 
 class Login(flask.views.MethodView):
     def get(self):
-        return flask.render_template('index.html')
+        return flask.render_template('login.html')
 
     def post(self):
         if 'logout' in flask.request.form:
@@ -20,4 +20,4 @@ class Login(flask.views.MethodView):
             flask.session['username'] = username
         else:
             flask.flash('Username does not exists or incorrect password.');
-        return flask.redirect(flask.url_for('index'))
+        return flask.redirect(flask.url_for('home'))
