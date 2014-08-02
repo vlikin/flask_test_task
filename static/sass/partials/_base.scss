@@ -1,10 +1,21 @@
-// Here is where you can define your constants for your application and to configure the blueprint framework.
-// Feel free to delete these if you want keep the defaults:
+@import "compass/css3/inline-block";
 
-$blueprint-grid-columns: 24;
-$blueprint-container-size: 950px;
-$blueprint-grid-margin: 10px;
+$default-border-radius: 6px;
+@import "compass/css3/border-radius";
 
-// Use this to calculate the width based on the total width.
-// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
-$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+$page-width: 960px;
+$padding: 6px;
+$margin: 6px;
+
+$main-color: #FF941A;
+$text-color: black;
+$bg-color: white;
+
+$font-size: 18px;
+$big-font-size: $font-size + 6;
+$small-font-size: $font-size - 6;
+
+$contrasted-dark-default: $text-color;
+$contrasted-light-default: $bg-color;
+$contrasted-lightness-threshold: 30%;
+@import "compass/utilities/color/contrast";

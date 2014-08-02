@@ -1,0 +1,226 @@
+/* line 1, ../sass/partials/_typography.scss */
+html {
+  background: white;
+  color: black;
+  font-size: 18px;
+  font-family: "Lato", "Trebuchet MS", Helvetica, Arial, sans-serif;
+}
+
+/* line 11, ../sass/partials/_typography.scss */
+h1 {
+  font-size: 24px;
+}
+
+/* line 1, ../sass/partials/_form.scss */
+input {
+  border: solid 1px black;
+  color: black;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+/* line 7, ../sass/partials/_form.scss */
+input[type="button"], input[type="submit"] {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  border: none;
+  background: #ff941a;
+  color: white;
+  padding: 6px;
+}
+/* line 14, ../sass/partials/_form.scss */
+input[type="button"]:hover, input[type="submit"]:hover {
+  background: #ffac4d;
+  color: white;
+  cursor: pointer;
+}
+
+/* line 1, ../sass/partials/_layout.scss */
+header#page-header {
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background: #ff941a;
+  color: black;
+  margin: 0px auto 6px auto;
+  width: 960px;
+}
+/* line 8, ../sass/partials/_layout.scss */
+header#page-header #page-logo {
+  padding: 6px;
+}
+
+/* line 13, ../sass/partials/_layout.scss */
+main#page-content {
+  width: 960px;
+  margin: 0px auto;
+}
+
+/* line 18, ../sass/partials/_layout.scss */
+nav#page-nav {
+  width: 960px;
+  margin: 0px auto;
+}
+/* line 21, ../sass/partials/_layout.scss */
+nav#page-nav ul {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+/* line 23, ../sass/partials/_layout.scss */
+nav#page-nav ul li {
+  background: #ff941a;
+  float: left;
+  list-style: none;
+  padding: 6px;
+}
+/* line 29, ../sass/partials/_layout.scss */
+nav#page-nav ul li:first-child {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+/* line 32, ../sass/partials/_layout.scss */
+nav#page-nav ul li:last-child {
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+/* line 36, ../sass/partials/_layout.scss */
+nav#page-nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+/* line 40, ../sass/partials/_layout.scss */
+nav#page-nav ul li a:hover {
+  color: white;
+}
+
+/* line 48, ../sass/partials/_layout.scss */
+footer#page-footer {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  background: #ff941a;
+  color: white;
+  margin: 6px auto 0px auto;
+  width: 960px;
+}
+/* line 55, ../sass/partials/_layout.scss */
+footer#page-footer #copyright {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* line 2, ../sass/pages/_login.scss */
+.page.page-login form {
+  width: 320px;
+  margin: auto;
+}
+
+/* line 19, ../sass/pages/_color-box.scss */
+#color-box {
+  background: green;
+}
+/* line 21, ../sass/pages/_color-box.scss */
+#color-box .row {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 100%;
+  font-size: 0px;
+}
+/* line 26, ../sass/pages/_color-box.scss */
+#color-box .row div {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 192px;
+  height: 192px;
+  content: "";
+  margin: 0px;
+  padding: 0px;
+}
+/* line 36, ../sass/pages/_color-box.scss */
+#color-box .c-p-1 {
+  background: #aa3939;
+}
+/* line 37, ../sass/pages/_color-box.scss */
+#color-box .c-p-2 {
+  background: #433d3d;
+}
+/* line 38, ../sass/pages/_color-box.scss */
+#color-box .c-p-3 {
+  background: #764a4a;
+}
+/* line 39, ../sass/pages/_color-box.scss */
+#color-box .c-p-4 {
+  background: #de0909;
+}
+/* line 40, ../sass/pages/_color-box.scss */
+#color-box .c-p-5 {
+  background: red;
+}
+/* line 42, ../sass/pages/_color-box.scss */
+#color-box .c-s1-1 {
+  background: #246068;
+}
+/* line 43, ../sass/pages/_color-box.scss */
+#color-box .c-s1-2 {
+  background: #252829;
+}
+/* line 44, ../sass/pages/_color-box.scss */
+#color-box .c-s1-3 {
+  background: #2e4548;
+}
+/* line 45, ../sass/pages/_color-box.scss */
+#color-box .c-s1-4 {
+  background: #087888;
+}
+/* line 46, ../sass/pages/_color-box.scss */
+#color-box .c-s1-5 {
+  background: #019cb2;
+}
+/* line 48, ../sass/pages/_color-box.scss */
+#color-box .c-s2-1 {
+  background: #80a035;
+}
+/* line 49, ../sass/pages/_color-box.scss */
+#color-box .c-s2-2 {
+  background: #3d3f39;
+}
+/* line 50, ../sass/pages/_color-box.scss */
+#color-box .c-s2-3 {
+  background: #636f46;
+}
+/* line 51, ../sass/pages/_color-box.scss */
+#color-box .c-s2-4 {
+  background: #95d009;
+}
+/* line 52, ../sass/pages/_color-box.scss */
+#color-box .c-s2-5 {
+  background: #aaf300;
+}

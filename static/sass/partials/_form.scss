@@ -1,0 +1,20 @@
+input {
+  border: solid 1px $text-color;
+  color: $text-color;
+  font-size: $font-size;
+  margin-bottom: $margin;
+  
+  &[type="button"], &[type="submit"] {
+    @include border-radius;
+    border: none;
+    background: $main-color;
+    color: $bg-color;
+    padding: $padding;
+
+    &:hover {
+      background: adjust-lightness($main-color, 10);
+      color: adjust-lightness($bg-color, 10);
+      cursor: pointer;
+    }
+  }
+}

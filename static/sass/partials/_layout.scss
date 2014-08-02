@@ -1,0 +1,59 @@
+header#page-header {
+  @include border-bottom-radius;
+  background: $main-color;
+  color: $text-color;
+  margin: 0px auto $margin auto;
+  width: $page-width;
+
+  #page-logo {
+    padding: $padding;
+  }
+}
+
+main#page-content {
+  width: $page-width;
+  margin: 0px auto;
+}
+
+nav#page-nav {
+  width: $page-width;
+  margin: 0px auto;
+  ul {
+    @include inline-block;
+    li {
+      background: $main-color;
+      float: left;
+      list-style: none;
+      padding: $padding;
+
+      &:first-child {
+        @include border-left-radius;
+      }
+      &:last-child {
+        @include border-right-radius;
+      }
+
+      a {
+        color: $bg-color;
+        text-decoration: none;
+
+        &:hover {
+          color: adjust-lightness($bg-color, 20);
+        }
+      }
+    }
+  }
+}
+
+footer#page-footer {
+  @include border-top-radius;
+  background: $main-color;
+  color: $bg-color;
+  margin: $margin auto 0px auto;
+  width: $page-width;
+
+  #copyright {
+    font-size: $small-font-size;
+    text-align: center;
+  }
+}

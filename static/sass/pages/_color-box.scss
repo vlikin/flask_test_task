@@ -1,0 +1,53 @@
+$c-p-1: #AA3939;
+$c-p-2: #433D3D;
+$c-p-3: #764A4A;
+$c-p-4: #DE0909;
+$c-p-5: #FF0000;
+
+$c-s1-1: #246068;
+$c-s1-2: #252829;
+$c-s1-3: #2E4548;
+$c-s1-4: #087888;
+$c-s1-5: #019CB2;
+
+$c-s2-1: #80A035;
+$c-s2-2: #3D3F39;
+$c-s2-3: #636F46;
+$c-s2-4: #95D009;
+$c-s2-5: #AAF300;
+
+#color-box {
+  background: green;
+  .row {
+    @include inline-block;
+    width: 100%;
+    font-size: 0px;
+
+    div {
+      @include inline-block;
+      width: $page-width / 5;
+      height: $page-width / 5;
+      content: "";
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+
+  .c-p-1 { background: $c-p-1; }
+  .c-p-2 { background: $c-p-2; }
+  .c-p-3 { background: $c-p-3; }
+  .c-p-4 { background: $c-p-4; }
+  .c-p-5 { background: $c-p-5; }
+
+  .c-s1-1 { background: $c-s1-1; }
+  .c-s1-2 { background: $c-s1-2; }
+  .c-s1-3 { background: $c-s1-3; }
+  .c-s1-4 { background: $c-s1-4; }
+  .c-s1-5 { background: $c-s1-5; }
+
+  .c-s2-1 { background: $c-s2-1; }
+  .c-s2-2 { background: $c-s2-2; }
+  .c-s2-3 { background: $c-s2-3; }
+  .c-s2-4 { background: $c-s2-4; }
+  .c-s2-5 { background: $c-s2-5; }
+}
