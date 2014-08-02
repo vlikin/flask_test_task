@@ -1,10 +1,11 @@
 from flask import g
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
+from flask.ext.script import Manager as ScriptManager
 from application import app
 
 def get_db():
-    db = getattr(g, '_database.', None)
+    db = getattr(g, '_database', None)
     if db is None:
         db = g._database = SQLAlchemy(app)
     return db
@@ -14,12 +15,18 @@ def teardpown_db(exception):
     pass
 
 def get_login_manager():
-    login_manager = getattr(g, '_login_manager.', None)
+    login_manager = getattr(g, '_login_manager', None)
     if login_manager is None:
         login_manager = LoginManager()
         login_manager.init_app(app)
     else:
         return login_manager
+
+def get_script_manager():
+    script_manager = getattr(g, '_script_manager', None)
+    if script_manager is None:
+        script_manager = g._script_manager = ScriptManager(app)
+    return script_manager
 
 def init_db():
     from core.models.user import User

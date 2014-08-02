@@ -1,4 +1,5 @@
 from flask import Flask
+
 import settings
 
 # Views.
@@ -22,8 +23,4 @@ app.add_url_rule('/remote/', view_func=Remote.as_view('remote'), methods=['GET',
 app.add_url_rule('/music/', view_func=Music.as_view('music'), methods=['GET'])
 
 if __name__ == '__main__':
-    from core.models.user import User
-    from core.models.context import init_db
-    init_db()
-    #app.app_context()
     app.run(debug=True)

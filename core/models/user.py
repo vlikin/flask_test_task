@@ -1,4 +1,4 @@
-from core.models.context import get_db
+from core.context import get_db
 
 db = get_db()
 
