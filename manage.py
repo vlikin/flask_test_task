@@ -1,14 +1,9 @@
-from flask.ext.script import Manager
-
-from application import app
 from core.context import get_script_manager
-
-app.app_context()
-manager = get_script_manager()
-
-@manager.command
-def hello():
-    print "hello"
+from application import app
 
 if __name__ == "__main__":
-    manager.run()
+  with app.app_context():
+    from core.script import *
+    script_manager = get_script_manager()
+    script_manager.run()
+

@@ -1,5 +1,5 @@
 import flask, flask.views
-from core.decorators import login_required
+from flask.ext.login import login_required
 import os
 
 class Remote(flask.views.MethodView):
