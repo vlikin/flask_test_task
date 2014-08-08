@@ -3,6 +3,7 @@ input {
   color: $text-color;
   font-size: $font-size;
   margin-bottom: $margin;
+  width: 300px;
   
   &[type="button"], &[type="submit"] {
     @include border-radius;
@@ -15,6 +16,40 @@ input {
       background: adjust-lightness($main-color, 10);
       color: adjust-lightness($bg-color, 10);
       cursor: pointer;
+    }
+  }
+}
+
+form {
+  ul.field-errors {
+    @include border-radius;
+    background: adjust-lightness(red, 20);
+    border: 1px solid red;
+    color: red;
+    font-size: $small-font-size;
+    margin: -33px auto auto 320px;
+    max-width: 250px;
+    padding: $padding;
+    position: absolute;
+
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.form-field.type-BooleanField {
+  float: left;
+  clear: both;
+
+  .field-label {
+    float: right;
+  }
+  .field-control {
+    float: right;
+
+    input {
+      width: auto
     }
   }
 }

@@ -1,23 +1,29 @@
-import flask, flask.views
-import settings
+import flask.views
+from flask import redirect, render_template, request, flash, url_for
+
+from core.decorators import for_anonymous
+from core.form.login import LoginForm
+from core.models.user import User
+from flask.ext.login import login_user
+from sqlalchemy import or_
 
 class Login(flask.views.MethodView):
-    def get(self):
-        return flask.render_template('login.html')
+  @for_anonymous('index')
+  def get(self):
+    form = LoginForm()
+    return render_template('login.html', form=form)
 
-    def post(self):
-        if 'logout' in flask.request.form:
-            flask.session.pop('username', None)
-            return self.get()
-        required = ['username', 'password']
-        for field in required:
-            if field not in flask.request.form:
-                flask.flash('Error: {0} is required'.format(field))
-                return flask.redirect(flask.url_for('login'))
-        username = flask.request.form['username']
-        password = flask.request.form['password']
-        if username in settings.users and settings.users[username] == password:
-            flask.session['username'] = username
-        else:
-            flask.flash('Username does not exists or incorrect password.');
-        return flask.redirect(flask.url_for('home'))
+  @for_anonymous('index')
+  def post(self):
+    form = LoginForm(request.form)
+    if form.validate():
+      user = User.query.filter(or_(\
+        User.username==form.username.data,\
+        User.password==form.password.data,\
+      )).first()
+      if user is None:
+        flash('Wrong authentication data.', 'error')
+        return render_template('login.html', form=form)
+
+      login_user(user)
+      return redirect(url_for('home'))

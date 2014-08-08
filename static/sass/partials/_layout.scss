@@ -10,6 +10,43 @@ header#page-header {
   }
 }
 
+div#page-title {
+  width: $page-width;
+  margin: 0px auto;
+}
+
+div#page-flashed {
+  width: $page-width;
+  margin: 0px auto;
+
+  ul {
+    li {
+      @include border-radius;
+      background: adjust-lightness(navy, 20);
+      border: 1px solid navy;
+      color: navy;
+      padding: $padding;
+      list-style: none;
+
+      &.category-info {
+        background: adjust-lightness(navy, 20);
+        border-color: navy;
+        color: navy;
+      }
+      &.category-error {
+        background: adjust-lightness(red, 20);
+        border-color: red;
+        color: red;
+      }
+      &.category-waring {
+        background: adjust-lightness(orange, 20);
+        border-color: orange;
+        color: orange;
+      }
+    }
+  }
+}
+
 main#page-content {
   width: $page-width;
   margin: 0px auto;

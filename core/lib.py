@@ -1,14 +1,12 @@
-from core.context import get_db, get_login_manager
-
-login_manager = get_login_manager()
+from app import app, login_manager
+from core.models.user import User
 
 @login_manager.user_loader
-def load_user(userid):
-    return User.get(userid)
+def load_user(user_id):
+  user = User.query.filter(User.id==user_id).first()
+  return user
 
 def init_db():
-  db = get_db()
-  from core.models.user import User
   db.drop_all()
   db.create_all()
   admin = User('admin', 'admin@example.com', 'admin')
@@ -20,6 +18,5 @@ def init_db():
   return db
 
 def drop_all():
-  db = get_db()
   from core.models.user import User
   db.drop_all()

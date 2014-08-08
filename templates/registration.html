@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "macro/form.html" import render_field %}
+
+{% block page_title %}
+  Registration
+{% endblock %}
+{% block body %}
+  <div class="page page-registration">
+    <form method="post" action="{{ url_for('registration') }}">
+      {{ render_field(form.username) }}
+      {{ render_field(form.email) }}
+      {{ render_field(form.password) }}
+      {{ render_field(form.confirm) }}
+      {{ render_field(form.accept_tos) }}
+      <input type=submit value=Register>
+    </form>
+  </div>
+{% endblock %}

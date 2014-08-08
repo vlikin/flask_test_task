@@ -30,22 +30,23 @@
         </ul>
       {% endblock %}
     </nav>
-    <main id="page-content">
-      {% block body %}{% endblock %}
-    </main>
-    {% block flashed %}
-      <div id="flashed">
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <pre>
-              {% for message in messages %}
-                {{message}}
+    <div id="page-title"><h1>{% block page_title %}Page title{% endblock %}</h1></div>
+    {% block page_flashed %}
+      <div id="page-flashed">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          <ul>
+            {% if messages %}
+              {% for category, message in messages %}
+                <li class="category-{{category}}">{{ message }}</li>
               {% endfor %}
-            </pre>
-          {% endif %}
+            {% endif %}
+          </ul>
         {% endwith %}
       </div>
     {% endblock %}
+    <main id="page-content">
+      {% block body %}{% endblock %}
+    </main>
     <footer id="page-footer">
       <div id='copyright'>
         © 2014 - Viktor Likin for Fast Monkeys.
