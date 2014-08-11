@@ -1,8 +1,11 @@
-import flask, flask.views
-from flask.ext.login import login_required
 import os
+from app import app
+from flask import render_template
+from flask.ext.classy import FlaskView
 
-class Music(flask.views.MethodView):
-  def get(self):
+class MusicView(FlaskView):
+  def index(self):
     songs = os.listdir('static/files/music/')
-    return flask.render_template('music.html', songs=songs)
+    return render_template('music.html', songs=songs)
+
+MusicView.register(app)

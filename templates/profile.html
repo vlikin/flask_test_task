@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page_title %}Profile page{% endblock %}
+{% block body %}
+<div class='page page-profile'>
+  <div class='field field-username'>
+    <div class='field-label'>Username</div>
+    <div class='field-value'>{{ user.username }}</div>
+  </div>
+  <div class='field field-email'>
+    <div class='field-label'>Email</div>
+    <div class='field-value'>{{ user.email }}</div>
+  </div>
+</div>
+{% endblock %}

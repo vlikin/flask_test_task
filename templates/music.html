@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+
+{% block page_title %}Music{% endblock %}
 {% block body %}
-    <h2>Music</h2>
+  <div class="page page-music">
     <audio controls="contorls" autoplay="autoplay" ></audio>
     <ul>
-        {% for song in songs %}
-            <li><a href="javascript:void(0)" onclick="playSong('{{song}}')">{{song}}</a></li>
-        {% endfor %}
+      {% for song in songs %}
+        <li><a href="javascript:void(0)" onclick="playSong('{{song}}')">{{song}}</a></li>
+      {% endfor %}
     </ul>
+  </div>
 {% endblock %}

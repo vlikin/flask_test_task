@@ -1,5 +1,11 @@
-from app import app, login_manager
+from app import app, db, login_manager
 from core.models.user import User
+
+from flask import render_template
+
+@app.errorhandler(404)
+def page_not_found(e):
+  return render_template('404.html'), 404
 
 @login_manager.user_loader
 def load_user(user_id):

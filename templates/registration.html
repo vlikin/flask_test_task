@@ -6,7 +6,7 @@
 {% endblock %}
 {% block body %}
   <div class="page page-registration">
-    <form method="post" action="{{ url_for('registration') }}">
+    <form method="post" action="{{ url_for('RegistrationView:post') }}">
       {{ render_field(form.username) }}
       {{ render_field(form.email) }}
       {{ render_field(form.password) }}
