@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "_macro/pagination.html" import render_pagination %}
+
+{% block page_title %}Friends{% endblock %}
+{% block body %}
+<div class='page page-profile page-profile-friends'>
+  <div class="table">
+    <div class="row heading">
+        <div class="cell">User name</div>
+        <div class="cell">Number of friends</div>
+      </div>
+    {% for friend in friends %}
+      <div class="row">
+        <div class="cell">{{ friend.username }}</div>
+        <div class="cell">{{ friend.count_friends }}</div>
+      </div>
+    {% endfor %}
+  </div>
+  {{ render_pagination(pagination, 'ProfileView:friends') }}
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>i
+<!DOCTYPE html>
 <html>
   <head>
     <title>Flask test task.</title>
@@ -18,13 +18,28 @@
           <img src="/static/images/logo.png" />
         </div>
       {% endblock %}
+      {% block page_user_menu %}
+        <div id="page-user-menu">
+          <ul>
+            {% if user.is_authenticated() %}
+              <li><a href="{{ url_for('ProfileView:index') }}">Welcome {{ user.username }}</a></li>
+              <li><a href="{{ url_for('ProfileView:index') }}">Profile</a></li>
+              <li><a href="{{ url_for('ProfileView:friends') }}">Friends</a></li>
+              <li><a href="{{ url_for('LogoutView:index') }}">Logout</a></li>
+            {% else %}
+              <li><a href="{{ url_for('LoginView:get') }}">Login</a></li>
+              <li><a href="{{ url_for('RegistrationView:get') }}">Register</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endblock %}
     </header>
     <nav id="page-nav">
       {% block nav %}
         <ul>
           <li><a href="{{url_for('IndexView:get', page='home')}}">Home</a></li>
-          <li><a href="{{url_for('LoginView:get')}}">Login</a></li>
           <li><a href="{{url_for('MusicView:index')}}">Music</a></li>
+          <li><a href="{{url_for('IndexView:get', page='color-box')}}">Color Box</a></li>
           <li><a href="{{url_for('IndexView:get', page='about')}}">About</a></li>
         </ul>
       {% endblock %}

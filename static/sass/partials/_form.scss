@@ -53,3 +53,51 @@ form {
     }
   }
 }
+
+.field {
+  .field-label {
+  }
+  .field-value {
+    font-weight: bold;
+    padding-left: $padding;
+  }
+}
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $margin;
+
+  .row {
+    display: table-row;
+    text-align: center;
+
+    .cell {
+      display: table-cell;
+      border: 1px solid $main-color;
+    }
+
+    &.heading {
+      .cell {
+        background: $main-color;
+        color: $bg-color;
+      }
+    }
+  }
+}
+
+.pagination {
+  text-align: center;
+  strong {
+    color: $main-color;
+  }
+  a, a:visited {
+    text-decoration: none;
+    color: $text-color;
+
+    &:hover {
+      color: $main-color;
+    }
+  }
+}

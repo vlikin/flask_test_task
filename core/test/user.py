@@ -48,3 +48,9 @@ class CoreTestCase(BaseTestCase):
 
     rv = self.app.get('/logout/', follow_redirects=True)
     assert 'User went out.' in rv.data
+
+  def test_friendship(self):
+    '''
+      - It tests friendship functionality these are hidden into UserModel.
+    '''
+    pass

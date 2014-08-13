@@ -1,7 +1,13 @@
 from app import app, db, login_manager
-from core.models.user import User
+from core.model.user import UserModel
+from core.model.friend import FriendModel
 
 from flask import render_template
+from flask.ext.login import current_user
+
+@app.context_processor
+def inject_user():
+    return dict(user=current_user)
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -9,20 +15,131 @@ def page_not_found(e):
 
 @login_manager.user_loader
 def load_user(user_id):
-  user = User.query.filter(User.id==user_id).first()
+  user = UserModel.query.filter(UserModel.id==user_id).first()
   return user
 
 def init_db():
   db.drop_all()
   db.create_all()
-  admin = User('admin', 'admin@example.com', 'admin')
-  guest = User('guest', 'guest@example.com', 'guest')
-  db.session.add(admin)
-  db.session.add(guest)
-  db.session.commit()
+  users = dict(
+    admin = dict(
+      obj = None,
+      friends = dict(
+        ask = [],
+        confirm = ['viktor', 'elena']
+      )
+    ),
+    viktor=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    elena=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    guest=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user1=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user2=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user3=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user4=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user5=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user6=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user7=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user8=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user9=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+    user10=dict(
+      obj=None,
+      friends = dict(
+        ask = ['admin'],
+        confirm = []
+      )
+    ),
+  )
+  # It creates users.
+  for username, user in users.items():
+    user['obj'] = UserModel.register(username, username + '@example.com', username)
+
+  # It generates requests for friendship.
+  for username, user in users.items():
+    for friendname in user['friends']['ask']:
+      friend = users[friendname]['obj']
+      user['obj'].ask_for_friendship(friend)
+
+  # It generates confirmations for friendship.
+  for username, user in users.items():
+    for friendname in user['friends']['confirm']:
+      friend = users[friendname]['obj']
+      user['obj'].confirm_friendship(friend)
 
   return db
 
 def drop_all():
-  from core.models.user import User
+  import core.model.friend
+  import core.model.user
   db.drop_all()

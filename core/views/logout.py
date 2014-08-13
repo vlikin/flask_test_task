@@ -5,7 +5,7 @@ from flask.ext.login import login_required, logout_user
 
 class LogoutView(FlaskView):
   @login_required
-  def get(self):
+  def index(self):
     logout_user()
     flash('User went out.', 'info')
     return redirect(url_for('IndexView:get', page='home'))

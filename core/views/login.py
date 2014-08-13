@@ -1,7 +1,7 @@
 from app import app
 from core.decorators import for_anonymous
 from core.form.login import LoginForm
-from core.models.user import User
+from core.model.user import UserModel
 from flask import redirect, render_template, request, flash, url_for
 from flask.ext.classy import FlaskView
 from flask.ext.login import login_user
@@ -17,9 +17,9 @@ class LoginView(FlaskView):
   def post(self):
     form = LoginForm(request.form)
     if form.validate():
-      user = User.query.filter(or_(\
-        User.username==form.username.data,\
-        User.password==form.password.data,\
+      user = UserModel.query.filter(or_(\
+        UserModel.username==form.username.data,\
+        UserModel.password==form.password.data,\
       )).first()
       if user is None:
         flash('Wrong authentication data.', 'error')

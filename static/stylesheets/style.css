@@ -77,6 +77,53 @@ form ul.field-errors li {
   width: auto;
 }
 
+/* line 60, ../sass/partials/_form.scss */
+.field .field-value {
+  font-weight: bold;
+  padding-left: 6px;
+}
+
+/* line 66, ../sass/partials/_form.scss */
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6px;
+}
+/* line 72, ../sass/partials/_form.scss */
+.table .row {
+  display: table-row;
+  text-align: center;
+}
+/* line 76, ../sass/partials/_form.scss */
+.table .row .cell {
+  display: table-cell;
+  border: 1px solid #ff941a;
+}
+/* line 82, ../sass/partials/_form.scss */
+.table .row.heading .cell {
+  background: #ff941a;
+  color: white;
+}
+
+/* line 90, ../sass/partials/_form.scss */
+.pagination {
+  text-align: center;
+}
+/* line 92, ../sass/partials/_form.scss */
+.pagination strong {
+  color: #ff941a;
+}
+/* line 95, ../sass/partials/_form.scss */
+.pagination a, .pagination a:visited {
+  text-decoration: none;
+  color: black;
+}
+/* line 99, ../sass/partials/_form.scss */
+.pagination a:hover, .pagination a:visited:hover {
+  color: #ff941a;
+}
+
 /* line 1, ../sass/partials/_layout.scss */
 header#page-header {
   -moz-border-radius-bottomleft: 6px;
@@ -87,26 +134,51 @@ header#page-header {
   border-bottom-right-radius: 6px;
   background: #ff941a;
   color: black;
+  clear: both;
   margin: 0px auto 6px auto;
+  height: 150px;
   width: 960px;
 }
-/* line 8, ../sass/partials/_layout.scss */
+/* line 10, ../sass/partials/_layout.scss */
 header#page-header #page-logo {
   padding: 6px;
+  float: left;
 }
 
-/* line 13, ../sass/partials/_layout.scss */
+/* line 16, ../sass/partials/_layout.scss */
 div#page-title {
   width: 960px;
   margin: 0px auto;
 }
 
-/* line 18, ../sass/partials/_layout.scss */
+/* line 21, ../sass/partials/_layout.scss */
+div#page-user-menu {
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  float: right;
+  border-color: white;
+  border-style: solid;
+  border-width: 0px 0px 1px 1px;
+}
+/* line 29, ../sass/partials/_layout.scss */
+div#page-user-menu ul li {
+  list-style: none;
+  float: left;
+  padding: 6px;
+}
+/* line 34, ../sass/partials/_layout.scss */
+div#page-user-menu ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 42, ../sass/partials/_layout.scss */
 div#page-flashed {
   width: 960px;
   margin: 0px auto;
 }
-/* line 23, ../sass/partials/_layout.scss */
+/* line 47, ../sass/partials/_layout.scss */
 div#page-flashed ul li {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -119,37 +191,37 @@ div#page-flashed ul li {
   padding: 6px;
   list-style: none;
 }
-/* line 31, ../sass/partials/_layout.scss */
+/* line 55, ../sass/partials/_layout.scss */
 div#page-flashed ul li.category-info {
   background: #0000e6;
   border-color: navy;
   color: navy;
 }
-/* line 36, ../sass/partials/_layout.scss */
+/* line 60, ../sass/partials/_layout.scss */
 div#page-flashed ul li.category-error {
   background: #ff6666;
   border-color: red;
   color: red;
 }
-/* line 41, ../sass/partials/_layout.scss */
+/* line 65, ../sass/partials/_layout.scss */
 div#page-flashed ul li.category-waring {
   background: #ffc966;
   border-color: orange;
   color: orange;
 }
 
-/* line 50, ../sass/partials/_layout.scss */
+/* line 74, ../sass/partials/_layout.scss */
 main#page-content {
   width: 960px;
   margin: 0px auto;
 }
 
-/* line 55, ../sass/partials/_layout.scss */
+/* line 79, ../sass/partials/_layout.scss */
 nav#page-nav {
   width: 960px;
   margin: 0px auto;
 }
-/* line 58, ../sass/partials/_layout.scss */
+/* line 82, ../sass/partials/_layout.scss */
 nav#page-nav ul {
   display: -moz-inline-stack;
   display: inline-block;
@@ -158,14 +230,14 @@ nav#page-nav ul {
   zoom: 1;
   *display: inline;
 }
-/* line 60, ../sass/partials/_layout.scss */
+/* line 84, ../sass/partials/_layout.scss */
 nav#page-nav ul li {
   background: #ff941a;
   float: left;
   list-style: none;
   padding: 6px;
 }
-/* line 66, ../sass/partials/_layout.scss */
+/* line 90, ../sass/partials/_layout.scss */
 nav#page-nav ul li:first-child {
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -174,7 +246,7 @@ nav#page-nav ul li:first-child {
   -webkit-border-bottom-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-/* line 69, ../sass/partials/_layout.scss */
+/* line 93, ../sass/partials/_layout.scss */
 nav#page-nav ul li:last-child {
   -moz-border-radius-topright: 6px;
   -webkit-border-top-right-radius: 6px;
@@ -183,17 +255,17 @@ nav#page-nav ul li:last-child {
   -webkit-border-bottom-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
-/* line 73, ../sass/partials/_layout.scss */
+/* line 97, ../sass/partials/_layout.scss */
 nav#page-nav ul li a {
   color: white;
   text-decoration: none;
 }
-/* line 77, ../sass/partials/_layout.scss */
+/* line 101, ../sass/partials/_layout.scss */
 nav#page-nav ul li a:hover {
   color: white;
 }
 
-/* line 85, ../sass/partials/_layout.scss */
+/* line 109, ../sass/partials/_layout.scss */
 footer#page-footer {
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -206,7 +278,7 @@ footer#page-footer {
   margin: 6px auto 0px auto;
   width: 960px;
 }
-/* line 92, ../sass/partials/_layout.scss */
+/* line 116, ../sass/partials/_layout.scss */
 footer#page-footer #copyright {
   font-size: 12px;
   text-align: center;
@@ -214,6 +286,12 @@ footer#page-footer #copyright {
 
 /* line 2, ../sass/pages/_login.scss */
 .page.page-login form {
+  width: 320px;
+  margin: auto;
+}
+
+/* line 2, ../sass/pages/_registration.scss */
+.page.page-registration form {
   width: 320px;
   margin: auto;
 }
