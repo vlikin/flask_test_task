@@ -2,10 +2,8 @@ from app import app
 from flask import render_template, request
 from flask.ext.login import current_user, login_required
 from flask.ext.classy import FlaskView
-from flask.ext.pagination import Pagination
 
 class ProfileView(FlaskView):
-  @login_required
   def index(self):
     return render_template('profile/index.html', user=current_user)
 
