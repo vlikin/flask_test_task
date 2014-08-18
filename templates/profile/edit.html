@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_macro/form.html" import render_field %}
+{% block page_title %}
+  Edit profile
+{% endblock %}
+{% block page_secondary_menu %}
+  <ul>
+    <li><a href="{{ url_for('ProfileView:index') }}">View</a></li>
+    <li class="current"><a href="#">Edit</a></li>
+  </ul>
+{% endblock %}
+{% block body %}
+  <div class="page page--profile--edit">
+    <form method="post" action="{{ url_for('ProfileView:post') }}">
+      {{ render_field(form.username) }}
+      {{ render_field(form.email) }}
+      {{ render_field(form.password) }}
+      {{ render_field(form.confirm) }}
+      <input type="submit" value="Save" />
+    </form>
+  </div>
+{% endblock %}

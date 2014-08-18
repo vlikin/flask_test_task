@@ -110,16 +110,16 @@ form ul.field-errors li {
 .pagination {
   text-align: center;
 }
-/* line 92, ../sass/partials/_form.scss */
+/* line 93, ../sass/partials/_form.scss */
 .pagination strong {
   color: #ff941a;
 }
-/* line 95, ../sass/partials/_form.scss */
+/* line 96, ../sass/partials/_form.scss */
 .pagination a, .pagination a:visited {
   text-decoration: none;
   color: black;
 }
-/* line 99, ../sass/partials/_form.scss */
+/* line 100, ../sass/partials/_form.scss */
 .pagination a:hover, .pagination a:visited:hover {
   color: #ff941a;
 }
@@ -174,11 +174,51 @@ div#page-user-menu ul li a {
 }
 
 /* line 42, ../sass/partials/_layout.scss */
-div#page-flashed {
+div#page-secondary-menu {
+  clear: both;
   width: 960px;
   margin: 0px auto;
 }
 /* line 47, ../sass/partials/_layout.scss */
+div#page-secondary-menu ul {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  background: #bdbd6b;
+  border-color: white;
+  border-style: solid;
+  border-width: 0px 0px 1px 1px;
+}
+/* line 55, ../sass/partials/_layout.scss */
+div#page-secondary-menu ul li {
+  list-style: none;
+  float: left;
+  padding: 6px;
+}
+/* line 60, ../sass/partials/_layout.scss */
+div#page-secondary-menu ul li a {
+  color: white;
+  text-decoration: none;
+}
+/* line 66, ../sass/partials/_layout.scss */
+div#page-secondary-menu ul li.current a {
+  color: #40401c;
+}
+
+/* line 74, ../sass/partials/_layout.scss */
+div#page-flashed {
+  width: 960px;
+  margin: 0px auto;
+}
+/* line 79, ../sass/partials/_layout.scss */
 div#page-flashed ul li {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -191,37 +231,37 @@ div#page-flashed ul li {
   padding: 6px;
   list-style: none;
 }
-/* line 55, ../sass/partials/_layout.scss */
+/* line 87, ../sass/partials/_layout.scss */
 div#page-flashed ul li.category-info {
   background: #0000e6;
   border-color: navy;
   color: navy;
 }
-/* line 60, ../sass/partials/_layout.scss */
+/* line 92, ../sass/partials/_layout.scss */
 div#page-flashed ul li.category-error {
   background: #ff6666;
   border-color: red;
   color: red;
 }
-/* line 65, ../sass/partials/_layout.scss */
-div#page-flashed ul li.category-waring {
+/* line 97, ../sass/partials/_layout.scss */
+div#page-flashed ul li.category-warning {
   background: #ffc966;
   border-color: orange;
   color: orange;
 }
 
-/* line 74, ../sass/partials/_layout.scss */
+/* line 106, ../sass/partials/_layout.scss */
 main#page-content {
   width: 960px;
   margin: 0px auto;
 }
 
-/* line 79, ../sass/partials/_layout.scss */
+/* line 111, ../sass/partials/_layout.scss */
 nav#page-nav {
   width: 960px;
   margin: 0px auto;
 }
-/* line 82, ../sass/partials/_layout.scss */
+/* line 114, ../sass/partials/_layout.scss */
 nav#page-nav ul {
   display: -moz-inline-stack;
   display: inline-block;
@@ -230,14 +270,14 @@ nav#page-nav ul {
   zoom: 1;
   *display: inline;
 }
-/* line 84, ../sass/partials/_layout.scss */
+/* line 116, ../sass/partials/_layout.scss */
 nav#page-nav ul li {
   background: #ff941a;
   float: left;
   list-style: none;
   padding: 6px;
 }
-/* line 90, ../sass/partials/_layout.scss */
+/* line 122, ../sass/partials/_layout.scss */
 nav#page-nav ul li:first-child {
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -246,7 +286,7 @@ nav#page-nav ul li:first-child {
   -webkit-border-bottom-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-/* line 93, ../sass/partials/_layout.scss */
+/* line 125, ../sass/partials/_layout.scss */
 nav#page-nav ul li:last-child {
   -moz-border-radius-topright: 6px;
   -webkit-border-top-right-radius: 6px;
@@ -255,17 +295,17 @@ nav#page-nav ul li:last-child {
   -webkit-border-bottom-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
-/* line 97, ../sass/partials/_layout.scss */
+/* line 129, ../sass/partials/_layout.scss */
 nav#page-nav ul li a {
   color: white;
   text-decoration: none;
 }
-/* line 101, ../sass/partials/_layout.scss */
+/* line 133, ../sass/partials/_layout.scss */
 nav#page-nav ul li a:hover {
   color: white;
 }
 
-/* line 109, ../sass/partials/_layout.scss */
+/* line 141, ../sass/partials/_layout.scss */
 footer#page-footer {
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -278,7 +318,7 @@ footer#page-footer {
   margin: 6px auto 0px auto;
   width: 960px;
 }
-/* line 116, ../sass/partials/_layout.scss */
+/* line 148, ../sass/partials/_layout.scss */
 footer#page-footer #copyright {
   font-size: 12px;
   text-align: center;
@@ -292,6 +332,12 @@ footer#page-footer #copyright {
 
 /* line 2, ../sass/pages/_registration.scss */
 .page.page-registration form {
+  width: 320px;
+  margin: auto;
+}
+
+/* line 2, ../sass/pages/profile/_edit.scss */
+.page.page--profile--edit form {
   width: 320px;
   margin: auto;
 }

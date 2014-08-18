@@ -37,14 +37,16 @@
     <nav id="page-nav">
       {% block nav %}
         <ul>
-          <li><a href="{{url_for('IndexView:get', page='home')}}">Home</a></li>
-          <li><a href="{{url_for('MusicView:index')}}">Music</a></li>
-          <li><a href="{{url_for('IndexView:get', page='color-box')}}">Color Box</a></li>
-          <li><a href="{{url_for('IndexView:get', page='about')}}">About</a></li>
+          <li><a href="{{ url_for('IndexView:get', page='home') }}">Home</a></li>
+          <li><a href="{{ url_for('ProfileView:list') }}">Users</a></li>
+          <li><a href="{{ url_for('MusicView:index') }}">Music</a></li>
+          <li><a href="{{ url_for('IndexView:get', page='color-box') }}">Color Box</a></li>
+          <li><a href="{{ url_for('IndexView:get', page='about') }}">About</a></li>
         </ul>
       {% endblock %}
     </nav>
     <div id="page-title"><h1>{% block page_title %}Page title{% endblock %}</h1></div>
+    <div id="page-secondary-menu">{% block page_secondary_menu %}{% endblock %}</div>
     {% block page_flashed %}
       <div id="page-flashed">
         {% with messages = get_flashed_messages(with_categories=true) %}

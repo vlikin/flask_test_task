@@ -39,6 +39,38 @@ div#page-user-menu {
   }
 }
 
+div#page-secondary-menu {
+  clear: both;
+  width: $page-width;
+  margin: 0px auto;
+
+  ul {
+    @include inline-block;
+    @include border-radius;
+    background: $secondary-color;
+    border-color: $bg-color;
+    border-style: solid;
+    border-width: 0px 0px 1px 1px;
+
+    li {
+      list-style: none;
+      float: left;
+      padding: $padding;
+
+      a {
+        color: $bg-color;
+        text-decoration: none;
+      }
+
+      &.current {
+        a {
+          color: adjust-lightness($secondary-color, -40);
+        }
+      }
+    }
+  }
+}
+
 div#page-flashed {
   width: $page-width;
   margin: 0px auto;
@@ -62,7 +94,7 @@ div#page-flashed {
         border-color: red;
         color: red;
       }
-      &.category-waring {
+      &.category-warning {
         background: adjust-lightness(orange, 20);
         border-color: orange;
         color: orange;

@@ -11,7 +11,7 @@
       </div>
     {% for friend in friends %}
       <div class="row">
-        <div class="cell">{{ friend.username }}</div>
+        <div class="cell"><a href="{{ url_for('ProfileView:get', id=friend.id) }}">{{ friend.username }}</a></div>
         <div class="cell">{{ friend.count_friends }}</div>
       </div>
     {% endfor %}

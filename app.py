@@ -1,6 +1,5 @@
 from flask import Flask
 from flask.ext.login import LoginManager
-#from flask_debugtoolbar import DebugToolbarExtension
 
 import settings
 
@@ -10,12 +9,12 @@ app.config.from_object(settings)
 
 from flask.ext.sqlalchemy import SQLAlchemy
 db = SQLAlchemy(app)
+db = SQLAlchemy(app, session_options = {"autoflush": False})
+db.session.autoflush = True
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'LoginView'
-
-#toolbar = DebugToolbarExtension(app)
+login_manager.login_view = 'LoginView:get'
 
 if __name__ == '__main__':
   app.run(debug=True)

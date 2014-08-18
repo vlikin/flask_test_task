@@ -32,7 +32,7 @@ class CoreTestCase(BaseTestCase):
     assert len(form.xpath('//input[@name="accept_tos"]')) == 1
     assert len(form.xpath('//input[@value="Register"]')) == 1
 
-  def test_user_process(self):
+  def test_login_user_process(self):
     '''
       - It tests the user registration process.
     '''
@@ -48,9 +48,3 @@ class CoreTestCase(BaseTestCase):
 
     rv = self.app.get('/logout/', follow_redirects=True)
     assert 'User went out.' in rv.data
-
-  def test_friendship(self):
-    '''
-      - It tests friendship functionality these are hidden into UserModel.
-    '''
-    pass

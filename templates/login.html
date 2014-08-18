@@ -5,6 +5,7 @@
 {% block body %}
   <div class="page page-login">
     <form method="post" action="{{ url_for('LoginView:get') }}">
+      {{ form.next|safe }}
       {{ render_field(form.username) }}
       {{ render_field(form.password) }}
       <input type="submit" value="Login">

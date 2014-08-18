@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "_macro/has_next__pagination.html" import render__has_next__pagination %}
+
+{% block page_title %}Users{% endblock %}
+{% block body %}
+<div class='page page-profile page-profile-friends'>
+  <div class="table">
+    <div class="row heading">
+        <div class="cell">User name</div>
+        <div class="cell">Number of friends</div>
+        <div class="cell">Status</div>
+        <div class="cell">Actions</div>
+      </div>
+    {% for user in users %}
+      <div class="row">
+        <div class="cell"><a href="{{ url_for('ProfileView:get', id=user.id) }}">{{ user.username }}</a></div>
+        <div class="cell">{{ user.count_friends }}</div>
+        <div class="cell">{{ user.status }}</div>
+        <div class="cell">
+          {% if not user.status %}
+            <a href="{{ url_for('ProfileView:ask_for_friendship', id=user.id) }}">Request</a>{% endif %}
+          {% if user.status=='request' %}
+            <a href="{{ url_for('ProfileView:confirm_friendship', id=user.id) }}">Confirm</a>
+          {% endif %}
+          {% if user.status != None %}
+            <a href="{{ url_for('ProfileView:delete_friendship', id=user.id) }}">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {{ render__has_next__pagination(pagination_view, page, has_next) }}
+</div>
+{% endblock %}

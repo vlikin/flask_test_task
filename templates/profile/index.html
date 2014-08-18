@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block page_title %}Profile page{% endblock %}
+{% block page_secondary_menu %}
+  {% if user.is_authenticated() %}
+    <ul>
+      <li class="current"><a href="">View</a></li>
+      <li><a href="{{ url_for('ProfileView:edit') }}">Edit</a></li>
+    </ul>
+  {% endif %}
+{% endblock %}
 {% block body %}
 <div class='page page-profile'>
   <div class='field field-username'>
