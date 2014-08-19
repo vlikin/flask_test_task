@@ -75,6 +75,13 @@ class UserModelTestCase(BaseTestCase):
     is_friend = friend.is_friend(self.test_user)
     assert is_friend == 'accepted' # A friend accepted a request for friendship.
 
+    # Check the best frined functionality.
+    self.test_user.set_best_friend(friend)
+    assert self.test_user.best_friend_id == friend.id # It sets the best friend.
+
+    self.test_user.deattach_best_friend()
+    assert self.test_user.best_friend_id == None # It deattaches the best frined.
+
     # Checks the relation deletion.
     friend.delete_friendship(self.test_user)
     status = self.test_user.is_friend(friend)

@@ -3,22 +3,32 @@
 
 {% block page_title %}Users{% endblock %}
 {% block body %}
-<div class='page page-profile page-profile-friends'>
+<div class='page page--profile page--profile--list'>
   <div class="table">
     <div class="row heading">
         <div class="cell">User name</div>
         <div class="cell">Number of friends</div>
+        <div class="cell">Best friend</div>
         <div class="cell">Status</div>
         <div class="cell">Actions</div>
       </div>
     {% for user in users %}
-      <div class="row">
+      <div class="row {{ 'best_friend' if current_user.id == user.id }}">
         <div class="cell"><a href="{{ url_for('ProfileView:get', id=user.id) }}">{{ user.username }}</a></div>
         <div class="cell">{{ user.count_friends }}</div>
+        <div class="cell">
+          {% if user.best_friend_id %}
+            <a href="{{ url_for('ProfileView:get', id=user.best_friend_id) }}">{{ user.best_friend_username }}</a>
+          {% endif %}
+        </div>
         <div class="cell">{{ user.status }}</div>
         <div class="cell">
+          {% if user.status in ['confirmed', 'accepted'] and current_user.id != user.best_friend_id%}
+            <a href="{{ url_for('ProfileView:make_best_friend', id=user.id) }}">Make best</a>
+          {% endif %}
           {% if not user.status %}
-            <a href="{{ url_for('ProfileView:ask_for_friendship', id=user.id) }}">Request</a>{% endif %}
+            <a href="{{ url_for('ProfileView:ask_for_friendship', id=user.id) }}">Request</a>
+          {% endif %}
           {% if user.status=='request' %}
             <a href="{{ url_for('ProfileView:confirm_friendship', id=user.id) }}">Confirm</a>
           {% endif %}

@@ -27,21 +27,24 @@ def init_db():
       friends = dict(
         ask = [],
         confirm = ['viktor', 'elena']
-      )
+      ),
+      best_friend = 'viktor'
     ),
     viktor=dict(
       obj=None,
       friends = dict(
-        ask = ['admin'],
+        ask = ['admin', 'elena'],
         confirm = []
-      )
+      ),
+      best_friend = 'elena'
     ),
     elena=dict(
       obj=None,
       friends = dict(
         ask = ['admin'],
-        confirm = []
-      )
+        confirm = ['viktor']
+      ),
+      best_friend = 'viktor'
     ),
     guest=dict(
       obj=None,
@@ -136,6 +139,13 @@ def init_db():
     for friendname in user['friends']['confirm']:
       friend = users[friendname]['obj']
       user['obj'].confirm_friendship(friend)
+
+  # It attaches the best friends.
+  for username, user in users.items():
+    if 'best_friend' not in user:
+      continue
+    best_friend = users[user['best_friend']]['obj']
+    user['obj'].set_best_friend(best_friend)
 
   return db
 

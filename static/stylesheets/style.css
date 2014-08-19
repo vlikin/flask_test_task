@@ -336,12 +336,6 @@ footer#page-footer #copyright {
   margin: auto;
 }
 
-/* line 2, ../sass/pages/profile/_edit.scss */
-.page.page--profile--edit form {
-  width: 320px;
-  margin: auto;
-}
-
 /* line 19, ../sass/pages/_color-box.scss */
 #color-box {
   background: green;
@@ -430,4 +424,15 @@ footer#page-footer #copyright {
 /* line 52, ../sass/pages/_color-box.scss */
 #color-box .c-s2-5 {
   background: #aaf300;
+}
+
+/* line 3, ../sass/pages/profile/_list.scss */
+.page.page--profile--list .table .row.best_friend {
+  background: #ffc480;
+}
+
+/* line 2, ../sass/pages/profile/_edit.scss */
+.page.page--profile--edit form {
+  width: 320px;
+  margin: auto;
 }

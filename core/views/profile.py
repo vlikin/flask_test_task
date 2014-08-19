@@ -10,7 +10,7 @@ import pdb
 class ProfileView(FlaskView):
   def get(self, id):
     user = UserModel.load_by_id(id)
-    return render_template('profile/index.html', user=current_user)
+    return render_template('profile/index.html', user=user)
 
   def index(self):
     return render_template('profile/index.html', user=current_user)
@@ -31,15 +31,25 @@ class ProfileView(FlaskView):
         ))
         db.session.add(current_user)
         db.session.commit()
-        flash('You profile has been edited.')
-      except Exception as exception_message:
-        flash(exception_message, 'warning')
+        flash('Your profile has been edited.')
+      except Exception as e:
+        flash(str(e), 'warning')
 
     return render_template('profile/edit.html', form=form)
 
   def view(self, user_id):
     user = UserModel.load_by_id(user_id)
     return render_template('profile/index.html', user=user)
+
+  @login_required
+  def make_best_friend(self, id):
+    friend = UserModel.load_by_id(id)
+    try:
+      current_user.set_best_friend(friend)
+      flash('%s is your best friend now.' % friend.username)
+    except Exception as e:
+      flash(str(e), 'warning')
+    return redirect(url_for('ProfileView:list'))
 
   @login_required
   def ask_for_friendship(self, id):

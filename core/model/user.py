@@ -2,25 +2,38 @@ from app import db
 from core.model.friend import FriendModel
 from core.table.user import UserTable
 from flask.ext.login import UserMixin
-from sqlalchemy import func, or_, and_
+from sqlalchemy import func, or_, and_, case
+from sqlalchemy.orm import aliased
 
 class UserModel(UserTable, UserMixin):
 
   @staticmethod
   def delete_by_id(id):
+    '''
+      - It deletes a user by his id.
+    '''
     UserModel.query.filter(UserModel.id==id).delete()
     FriendModel.query.filter(or_(FriendModel.user_id==id, FriendModel.friend_id)).delete()
 
   @staticmethod
   def load_by_id(user_id):
+    '''
+      - It loads a user by his id.
+    '''
     return UserModel.query.filter(UserModel.id==user_id).first()
 
   @staticmethod
   def load_by_username(username):
+    '''
+      - It loads a user by his username.
+    '''
     return UserModel.query.filter(UserModel.username==username).first()
 
   @staticmethod
   def register(username, email, password):
+    '''
+      - It registers a user into the system.
+    '''
     user = UserModel(username, email, password)
     db.session.add(user)
     db.session.commit()
@@ -28,13 +41,39 @@ class UserModel(UserTable, UserMixin):
 
   @staticmethod
   def is_free(username, email):
+    '''
+      - It checks if a user is registered with a such data in the system.
+    '''
     user = UserModel.query.filter(or_(\
       UserModel.username==username,\
       UserModel.email==email,\
     )).first()
     return user is None
 
+  def set_best_friend(self, friend, commit=True):
+    '''
+      - It sets a best friend.
+    '''
+    if not self.is_friend(friend):
+      raise Exception('He is not your friend. You can not set him as the best friend.')
+    self.best_friend_id = friend.id
+    db.session.add(self)
+    db.session.commit()
+
+  def deattach_best_friend(self, commit=True):
+    '''
+      - It deattachs the best friend.
+    '''
+    self.best_friend_id = None
+    if commit:
+      db.session.add(self)
+      db.session.commit()
+
+
   def update_profile(self, profile=dict()):
+    '''
+      - It tries to update user's profile correctly.
+    '''
     if 'username' in profile and self.username != profile['username']:
       user_username = UserModel.query.filter(UserModel.username==profile['username'], UserModel.username!=self.username).first()
       if user_username != None:
@@ -51,6 +90,9 @@ class UserModel(UserTable, UserMixin):
       setattr(self, key, profile[key])
 
   def is_friend(self, friend):
+    '''
+      - It checks if the user is a friend.
+    '''
     relation = FriendModel.query.filter(and_(FriendModel.user_id==self.id, FriendModel.friend_id==friend.id)).first()
     if relation is None:
       return None
@@ -58,6 +100,9 @@ class UserModel(UserTable, UserMixin):
 
 
   def get_friends(self, page=1, per_page=2):
+    '''
+      - It returns a list of friends.
+    '''
     friends = []
     friends_subquery = db.Query(FriendModel.friend_id).select_from(FriendModel).filter(FriendModel.user_id==self.id)
     paginator = UserModel.query\
@@ -74,22 +119,41 @@ class UserModel(UserTable, UserMixin):
     return friends, paginator
 
   def get_users(self, page=1, per_page=2):
+    '''
+      - It returns a list of users with data.
+    '''
+    FUserModel = aliased(UserModel)
     query_1 = db\
-      .session.query(UserModel.id, UserModel.username, func.count().label('friends'))\
+      .session.query(
+        UserModel.id,
+        UserModel.username,
+        UserModel.email,
+        UserModel.best_friend_id,
+        FUserModel.username.label('friend_username'),
+        func.count().label('friends')
+      )\
       .select_from(UserModel)\
-      .outerjoin(FriendModel, UserModel.id==FriendModel.user_id)\
-      .group_by(UserModel.id)
+      .outerjoin(FUserModel, UserModel.best_friend_id==FUserModel.id)\
+      .outerjoin(FriendModel, and_(UserModel.id==FriendModel.user_id))\
+      .group_by(FriendModel.user_id)
     s_1 = query_1.subquery('s_1')
     query_2 = db\
       .session.query(s_1, FriendModel.status)\
       .select_from(s_1)\
       .outerjoin(FriendModel, and_(FriendModel.user_id==s_1.c.id, FriendModel.friend_id==self.id))\
+      .order_by(case([
+        (s_1.c.id==self.id, 0),
+        (FriendModel.status=='request', 1),
+        (FriendModel.status=='decision', 2),
+        (FriendModel.status=='confirmed', 3),
+        (FriendModel.status=='accepted', 4),
+      ], else_=99))\
       .limit(per_page + 1)\
-      .offset((per_page - 1) * page)
+      .offset((per_page - 1) * (page - 1))
     has_next = (query_2.count() == (per_page + 1))
     user_tuple_list = query_2.all()[:-1]
-    user_tuple_list
-    user_dict_list = [ dict(zip(['id', 'username', 'count_friends', 'status'], user_tuple)) for user_tuple in user_tuple_list ]
+    user_dict_list = [ dict(zip(['id', 'username', 'email', 'best_friend_id', 'best_friend_username', 'count_friends', 'status'], user_tuple)) for user_tuple in user_tuple_list ]
+
     return user_dict_list, has_next
 
   def ask_for_friendship(self, friend):

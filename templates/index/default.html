@@ -1,4 +1,61 @@
 {% extends "base.html" %}
 {% block body %}
-  This is a deafault index page.
+  <ul class="bxslider">
+    <li class="slide-1">
+      <img src="https://media.licdn.com/media/p/2/005/01c/2dd/319357d.jpg" style="float:left; margin: 6px;"/>
+      Hello! My name is Viktor. I am looking for a job as a python developer. This is a test project to apply for a job. To study me better follow on links:
+      <ul>
+        <li><a href="http://ua.linkedin.com/pub/viktor-likin/46/aa1/172/">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/viktor.likin">Facebook</a></li>
+        <li><a href="https://github.com/vlikin/"></a>Github</li>
+        <li><a href="http://www.slideshare.net/ViktorLikin">SlideShare</a></li>
+        <li><a href="https://www.odesk.com/users/~018e77c0f4e266ae92">Odesk</a></li>
+        <li><a href="https://www.drupal.org/user/769560">Drupal.org</a></li>
+        <li><a href="http://www.beatmycode.com/user/vlikin">BeatMyCode</a></li>
+      </ul>
+      Connect me by:
+      <ul>
+        <li>Skype: <b>vlikin</b></li>
+        <li>Email: <b>viktor.likin@gmail.com</b></li>
+      </ul>
+      This project has been created according to the <a href="http://www.fastmonkeys.com/static/exercise/web-developer.pdf">client requirements</a>. There are a lot of requirements and conditions. They are not all equal. Somewhere I used my solutions. I hope the client will understand me. Follow on the slideshow to study the project. Regards.
+    </li>
+    <li class="slide-2">
+      <h1>Fast  Monkeys  —  Web  Developer  Exercise</h1><br />
+      Description of the project is <a href="http://www.fastmonkeys.com/static/exercise/web-developer.pdf">here</a>. You can view sources <a href="https://github.com/vlikin/flask_test_task">here on GitHub</a>. The site is deployed here <a href="http://flask-test.shelepen.com.ua/">http://flask-test.shelepen.com.ua</a>. The project is deployed on VPS, that is rented att <a href="https://www.digitalocean.com/">DigitalOcean</a>. The flask project is deployed using Nginx, uWSGI and a python virtual enviroment technologies. So it is the <a href="http://flask.pocoo.org/">Flask</a> based project. Requirements you can look <a href="https://github.com/vlikin/flask_test_task/blob/master/configs/requirements.txt">here</a>. Main of them are: Flask, Flask-Classy, Flask-Loginm, Flask-SQLAlchemy, Flask-Script, Flask-WTF, Jinja2, Werkzeug, unittest.
+    </li>
+    <li class="slide-3">
+      <h1>Installation tips</h1><br />
+      Take code from. <br />
+      <b>git@github.com:vlikin/flask_test_task.git</b><br />
+      Nginx settings you can find <a href="https://github.com/vlikin/flask_test_task/blob/master/configs/nginx-flask-test.txt">here</a>. uwsgi settings you can find <a href="https://github.com/vlikin/flask_test_task/blob/master/configs/uwsgi-flask-test.txt">here</a>. To configure the virtual enviroment use this <a href="https://github.com/vlikin/flask_test_task/blob/master/configs/requirements.txt">frezze file - requirements</a>. To init database run the command<br/>
+      <b>python manage.py init_db</b><br /> It drops tables, creates new tables, fill them by test data. Use credentials: login <b>admin</b>, password <b>admin</b> to start using the system. Passwords are not secure now. There are users. Users have same passwords as they names are. Passwords are stored by open way. It is not secure. I will change it for a real project. Follow on the next slide.
+    </li>
+    <li><img src="/static/images/screenshots/1-registration-form.png"/></li>
+    <li><img src="/static/images/screenshots/2-registration-form-validation.png"/></li>
+    <li><img src="/static/images/screenshots/3-login-form.png"/></li>
+    <li><img src="/static/images/screenshots/4-user-authentication.png"/></li>
+    <li><img src="/static/images/screenshots/5-user-profile.png"/></li>
+    <li><img src="/static/images/screenshots/6-user-profile-edit.png"/></li>
+    <li><img src="/static/images/screenshots/7-user-friends.png"/></li>
+    <li><img src="/static/images/screenshots/8-page-music.png"/></li>
+    <li><img src="/static/images/screenshots/9-page-color-box.png"/></li>
+    <li><img src="/static/images/screenshots/10-users.png"/></li>
+    <li><img src="/static/images/screenshots/11-users-ask.png"/></li>
+    <li><img src="/static/images/screenshots/12-users-decision.png"/></li>
+    <li><img src="/static/images/screenshots/13-user-logout.png"/></li>
+    <li><img src="/static/images/screenshots/14-users-confirm.png"/></li>
+    <li><img src="/static/images/screenshots/15-users-make-best.png"/></li>
+    <li><img src="/static/images/screenshots/16-users-is-best.png"/></li>
+    <li><img src="/static/images/screenshots/17-users-delete-user.png"/></li>
+    <li><img src="/static/images/screenshots/18-users-user-is-deleted.png"/></li>
+    <li><img src="/static/images/screenshots/19-users-check-deletion.png"/></li>
+    <li><img src="/static/images/screenshots/20-script-help.png"/></li>
+    <li><img src="/static/images/screenshots/21-script-run-tests.png"/></li>
+    <li><img src="/static/images/screenshots/22-script-delete-user.png"/></li>
+    <li>
+      <h1>Thank you.</h1>
+      Connect me by skype: <b>vlikin</b>
+    </li>
+  </ul>
 {% endblock %}
